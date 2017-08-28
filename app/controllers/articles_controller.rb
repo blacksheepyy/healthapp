@@ -13,7 +13,7 @@ class ArticlesController < ApplicationController
     def create
         @article = Article.new(article_params)
         if @article.save
-            flash[:notice] = "Score has been submitted"
+            flash[:success] = "Score has been submitted"
             redirect_to article_path(@article)
         else
             render 'new'
@@ -28,7 +28,7 @@ class ArticlesController < ApplicationController
     def destroy
         
         @article.destroy
-        flash[:notice] = "Score has been deleted"
+        flash[:danger] = "Score has been deleted"
         redirect_to articles_path
     end
     
@@ -39,7 +39,7 @@ class ArticlesController < ApplicationController
     def update
         
         if @article.update(article_params)
-            flash[:notice] = "Score was successfully submitted"
+            flash[:success] = "Score was successfully submitted"
             redirect_to article_path(@article)
         else
             render 'edit'

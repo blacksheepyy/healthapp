@@ -1,27 +1,41 @@
-<% if @article.errors.any? %>
-<h2>The following errors prevented the score form being submitted</h2>
-<ul>
-    <% @article.errors.full_messages.each do |msg| %>
-        <li><%= msg %></li>
-    <% end %>
-</ul>
-<% end %>
+<%= render 'shared/errors', obj: @article %>
 
 
-<%= form_for @article do |f| %>
+<div class="row">
+    <div class='col-xs-12'>
+        <%= form_for(@article, :html => {class: "form-horizontal", role: "form"}) do |f| %>
+            <div class="form-group">
+                <div class="control-label col-sm-2">
+                    <%= f.label :score %>
+                </div>
+                <div class="col-sm-8">
+                    <%= f.number_field :score, class: "form-control", placeholder: "Input your score", autofocus: true %>
+                </div>
+            </div>
+            
+            <div class="form-group">
+                <div class="control-label col-sm-2">
+                    <%= f.label :comment %>
+                </div>
+                <div class="col-sm-8">
+                    <%= f.text_area :comment, rows: 5, class: "form-control", placeholder: "Comments(Optional)", autofocus: true %>
+                </div>
+            </div>
+            
+            <div class="form-group">
+                <div class="col-sm-offset-2 col-sm-10">
+                <%= link_to "Back", articles_path, class:"btn btn-danger" %>
+                <%= f.submit class: 'btn btn-primary' %>
+                </div>
+            </div>
 
-    <p>
-        <%= f.label :score %> <br/>
-        <%= f.number_field :score %>
-    </p>
-    <p>
-        <%= f.label :comment %><br/>
-        <%= f.text_area :comment %>
-    </p>
-    <p>
-        <%= f.submit %>
-    </p>
+        
+        <% end %>
+        
+        
+        
+        
+    </div>
+</div>
 
-<% end %>
 
-<%= link_to "Back", articles_path %>
