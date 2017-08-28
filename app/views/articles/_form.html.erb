@@ -1,0 +1,27 @@
+<% if @article.errors.any? %>
+<h2>The following errors prevented the score form being submitted</h2>
+<ul>
+    <% @article.errors.full_messages.each do |msg| %>
+        <li><%= msg %></li>
+    <% end %>
+</ul>
+<% end %>
+
+
+<%= form_for @article do |f| %>
+
+    <p>
+        <%= f.label :score %> <br/>
+        <%= f.number_field :score %>
+    </p>
+    <p>
+        <%= f.label :comment %><br/>
+        <%= f.text_area :comment %>
+    </p>
+    <p>
+        <%= f.submit %>
+    </p>
+
+<% end %>
+
+<%= link_to "Back", articles_path %>

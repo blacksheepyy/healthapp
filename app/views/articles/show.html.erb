@@ -1,0 +1,9 @@
+<h1>Show Score</h1>
+
+<p>Score: <%= @article.score %></p>
+<p>Comment: <%= @article.comment %></p>
+
+
+<%= link_to "Back", articles_path %>
+
+<%= link_to "Edit", edit_article_path(@article) %>
