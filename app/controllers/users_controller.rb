@@ -29,7 +29,12 @@ class UsersController < ApplicationController
     end
     
     def show
-       @user = User.find(params[:id]) 
+       @user = User.find(params[:id])
+       @user_articles = @user.articles.order('created_at DESC').paginate(page: params[:page], per_page: 5)
+    end
+    
+    def index
+        @users = User.paginate(page: params[:page], per_page: 10)
     end
     
     private
