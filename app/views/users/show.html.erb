@@ -1,4 +1,4 @@
-<% if @user.articles.nil? == true %>
+<% if @articlesuserid.nil? != true %>
     <% if logged_in? && (current_user.id == @articlesuserid.user_id  || current_user.id.to_s == @articlesuserid.user_linemanager || current_user.admin?) %>
     <h1 align="center">Welcome to <%= @user.username %>'s page</h1>
     <div class="center">
