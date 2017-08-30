@@ -14,6 +14,9 @@ class ArticlesController < ApplicationController
     
     def create
         @article = Article.new(article_params)
+        @article.user = current_user
+        
+        @article.user_linemanager = current_linemanager
         if @article.save
             flash[:success] = "Score has been submitted"
             redirect_to article_path(@article)
