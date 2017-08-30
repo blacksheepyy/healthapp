@@ -8,8 +8,10 @@
         <th>Username</th>
         <th>Email</th>
         <th>Line Manager ID</th>
-        
-         
+        <th>Admin?</th>
+        <% if logged_in? && current_user.admin? %>
+            <th>Delete User</th>
+        <% end %>
     </tr>
     
     <% @users.each do |u| %>
@@ -23,6 +25,13 @@
             <td>
                 <%= u.linemanager %>
             </td>
+            <td>
+                <%= u.admin %>
+            </td>
+            <% if logged_in? && current_user.admin? %>
+                    <td><%= link_to "Delete this user", user_path(u), method: :delete, 
+                    data: { confirm: "Are you sure you want to delete the user and all their scores?"} %></td>
+            <% end %>
           
             
         </tr>
