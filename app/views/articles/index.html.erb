@@ -1,8 +1,14 @@
+<% if logged_in? && current_user.admin? %>
 <h1>Listing all Scores</h1>
 <div align="center">
     <%= will_paginate %>
 </div>
-<%= render 'article', obj: @articles  %>
+
+    <%= render 'article', obj: @articles  %>
+
 <div align="center">
     <%= will_paginate %>
 </div>
+<% else %>
+<h1 align = "center">You have no right to access this page.</h1>
+<% end %>

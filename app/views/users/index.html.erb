@@ -1,4 +1,4 @@
-<h1 align="center">All Users</h1>
+<h1 align="center">Your Reportees</h1>
 
 <div align="center">
     <%= will_paginate %>
@@ -7,14 +7,15 @@
     <tr>
         <th>Username</th>
         <th>Email</th>
+        <th>Users ID</th>
         <th>Line Manager ID</th>
-        <th>Admin?</th>
         <% if logged_in? && current_user.admin? %>
+            <th>Admin?</th>
             <th>Delete User</th>
         <% end %>
     </tr>
-    
     <% @users.each do |u| %>
+        <% if logged_in? && (current_user.id.to_s == u.linemanager || current_user.admin? )%>
         <tr>
             <td>
                 <%= link_to u.username, user_path(u) %>
@@ -23,18 +24,20 @@
                 <%= u.email %>
             </td>
             <td>
+                <%= u.id %>
+            </td>
+            <td>
                 <%= u.linemanager %>
             </td>
+            <% if logged_in? && current_user.admin? %>
             <td>
                 <%= u.admin %>
             </td>
-            <% if logged_in? && current_user.admin? %>
                     <td><%= link_to "Delete this user", user_path(u), method: :delete, 
                     data: { confirm: "Are you sure you want to delete the user and all their scores?"} %></td>
             <% end %>
-          
-            
         </tr>
+        <% end %>
     <% end %>
 </table>
 <div align="center">

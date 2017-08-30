@@ -11,7 +11,7 @@ class UsersController < ApplicationController
         @user = User.new(user_params)
         if @user.save
             flash[:success] = "Welcome to the WSP App #{@user.username}"
-            redirect_to articles_path
+            redirect_to users_path
         else
             render 'new'
         end
@@ -25,7 +25,7 @@ class UsersController < ApplicationController
         
         if @user.update(user_params)
             flash[:success] = "Your account was updated successfully"
-            redirect_to articles_path
+            redirect_to users_path
         else
             render 'edit'
         end
@@ -34,6 +34,7 @@ class UsersController < ApplicationController
     def show
        
        @user_articles = @user.articles.order('created_at DESC').paginate(page: params[:page], per_page: 5)
+       @articlesuserid = @user.articles.first
     end
     
     def destroy
