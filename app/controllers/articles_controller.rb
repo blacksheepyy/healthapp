@@ -34,7 +34,7 @@ class ArticlesController < ApplicationController
         
         @article.destroy
         flash[:danger] = "Score has been deleted"
-        redirect_to articles_path
+        redirect_to user_path(@article.user)
     end
     
     def edit
