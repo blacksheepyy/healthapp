@@ -1,12 +1,16 @@
-<% if logged_in? && (current_user.id == @articlesuserid.user_id  || current_user.id.to_s == @articlesuserid.user_linemanager || current_user.admin?) %>
-<h1 align="center">Welcome to <%= @user.username %>'s page</h1>
-<div class="center">
-    <%= will_paginate @user_articles %>
-</div>
-<%= render 'articles/article', obj: @user_articles %>
-<div class="center">
-    <%= will_paginate @user_articles %>
-</div>
+<% if @user.articles.nil? == true %>
+    <% if logged_in? && (current_user.id == @articlesuserid.user_id  || current_user.id.to_s == @articlesuserid.user_linemanager || current_user.admin?) %>
+    <h1 align="center">Welcome to <%= @user.username %>'s page</h1>
+    <div class="center">
+        <%= will_paginate @user_articles %>
+    </div>
+    <%= render 'articles/article', obj: @user_articles %>
+    <div class="center">
+        <%= will_paginate @user_articles %>
+    </div>
+    <% else %>
+        <h1 align="center">You have no right to see this content</h1>
+    <% end %>
 <% else %>
-    <h1 align="center">You have no right to see this content</h1>
+    <h1 align="center">This User has no Scores submitted</h1>
 <% end %>
