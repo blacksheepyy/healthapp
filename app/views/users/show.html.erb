@@ -10,7 +10,7 @@
     </div>
     <div>
     <h3>Scores</h3>
-    <%= line_chart @user.articles.group(:created_at).sum(:score) %>
+        <%= line_chart(@result, min: nil) %>
     </div>
     
     <% else %>
