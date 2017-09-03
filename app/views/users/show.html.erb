@@ -8,6 +8,10 @@
     <div class="center">
         <%= will_paginate @user_articles %>
     </div>
+    <div >
+    <h3>Scores</h3>
+    <%= line_chart @user.articles.group(:created_at).sum(:score) %>
+    </div>
     <% else %>
         <h1 align="center">You have no right to see this content</h1>
     <% end %>

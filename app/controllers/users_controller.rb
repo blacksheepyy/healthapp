@@ -35,6 +35,10 @@ class UsersController < ApplicationController
        
        @user_articles = @user.articles.order('created_at DESC').paginate(page: params[:page], per_page: 5)
        @articlesuserid = @user.articles.first
+    #   @result = {}
+    #     @user.articles.each do |u|
+    #     @result[u.created_at] = u.score
+    #     end
     end
     
     def destroy
