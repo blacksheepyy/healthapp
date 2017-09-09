@@ -6,13 +6,23 @@
 <div class="row">
     <div class='col-xs-12'>
         <%= form_for(@article, :html => {class: "form-horizontal", role: "form"}) do |f| %>
-            <div class="form-group">
-                <div class="control-label col-sm-2">
-                    <%= f.label :score %>
-                </div>
-                <div class="col-sm-8">
-                    <%= f.number_field :score, class: "form-control", placeholder: "Input your score", autofocus: true %>
-                </div>
+            <!--<div class="form-group">-->
+            <!--    <div class="control-label col-sm-2">-->
+                    <%#= f.label :score %>
+            <!--    </div>-->
+            <!--    <div class="col-sm-8">-->
+                    <%#= f.number_field :score, class: "form-control", placeholder: "Input your score", autofocus: true %>
+            <!--    </div>-->
+            <!--</div>-->
+            
+            <div class="form-group center">
+               
+                    <label><input type="radio" name="article[score]" value="1"><%= image_tag 'WSP Health App/bad.png' %></label> 
+                    <label><input type="radio" name="article[score]" value="2"><%= image_tag 'WSP Health App/soso.png' %></label> 
+                    <label><input type="radio" name="article[score]" value="3"><%= image_tag 'WSP Health App/fair.png' %></label>
+                    <label><input type="radio" name="article[score]" value="4"><%= image_tag 'WSP Health App/okay.png' %></label>
+                    <label><input type="radio" name="article[score]" value="5"><%= image_tag 'WSP Health App/happy.png' %></label>
+                
             </div>
             
             <div class="form-group">
@@ -27,7 +37,7 @@
             <div class="form-group">
                 <div class="col-sm-offset-2 col-sm-10">
                 <%= link_to "Back", articles_path, class:"btn btn-danger" %>
-                <%= f.submit class: 'btn btn-primary' %>
+                <%= f.submit "Submit Score", class: 'btn btn-primary' %>
                 </div>
             </div>
 
