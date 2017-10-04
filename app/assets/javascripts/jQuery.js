@@ -1,4 +1,7 @@
 $(document).on('turbolinks:load', function() {
+    
+
+
  $('img').hover(function(){
    $('.hover').removeClass('hover'); // removes the previous selected class
    $(this).addClass('hover'); // adds the class to the clicked image
@@ -23,3 +26,4 @@ $('img').mouseleave(function(){
         
 });
 })
+
