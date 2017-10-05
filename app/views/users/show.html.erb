@@ -10,7 +10,7 @@
     </div>
     <div>
     <h3>Scores</h3>
-        <%= line_chart(@result, min: nil) %>
+        <%= line_chart(@result, min: 0, max: 5, curve: false) %>
     </div>
     
     <% else %>
