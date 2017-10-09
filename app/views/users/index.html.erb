@@ -10,6 +10,8 @@
             <th>Email</th>
             <th>Users ID</th>
             <th>Line Manager ID</th>
+            <th>Latest Score</th>
+            <th>Last Updated</th>
             <% if logged_in? && current_user.admin? %>
                 <th>Admin?</th>
                 <th>Delete User</th>
@@ -30,6 +32,42 @@
                 <td>
                     <%= u.linemanager %>
                 </td>
+                <% if u.articles.last.nil? != true %>
+                    <% if u.articles.last.score == "1" %>
+                        <td>
+                            <%= image_tag 'WSP Health App/bad.png' %>
+                        </td>
+                    <% elsif u.articles.last.score == "2" %>
+                        <td>
+                            <%= image_tag 'WSP Health App/soso.png' %>
+                        </td>
+                    <% elsif u.articles.last.score == "3" %>
+                        <td>
+                            <%= image_tag 'WSP Health App/fair.png' %>
+                        </td>
+                    <% elsif u.articles.last.score == "4" %>
+                        <td>
+                            <%= image_tag 'WSP Health App/okay.png' %>
+                        </td>
+                    <% elsif u.articles.last.score == "5" %>
+                        <td>
+                            <%= image_tag 'WSP Health App/happy.png' %>
+                        </td>
+                    <% end %>
+                <% else %>
+                <td>
+                    N/A
+                </td>
+                <% end %>
+                <% if u.articles.last.nil? != true %>
+                <td>
+                    <%= u.articles.last.created_at %>
+                </td>
+                <% else %>
+                <td>
+                    N/A
+                </td>
+                <% end %>
                 <% if logged_in? && current_user.admin? %>
                 <td>
                     <%= u.admin %>
