@@ -61,7 +61,7 @@
                 <% end %>
                 <% if u.articles.last.nil? != true %>
                 <td>
-                    <%= u.articles.last.created_at %>
+                    <%= time_ago_in_words(u.articles.last.created_at) %> ago
                 </td>
                 <% else %>
                 <td>
