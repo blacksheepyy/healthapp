@@ -1,9 +1,11 @@
 <% if logged_in? %>
     <h1 align="center">Your Reportees</h1>
     
+    <% if logged_in? && current_user.admin? %>
     <div align="center">
         <%= will_paginate %>
     </div>
+    <% end %>
     <table class="table table-hover">
         <tr>
             <th>Username</th>
@@ -79,9 +81,7 @@
             <% end %>
         <% end %>
     </table>
-    <div align="center">
-        <%= will_paginate %>
-    </div>
+    
 <% else %>
     <h1 align="center">You have no right to access this content</h1>
 <% end %>
