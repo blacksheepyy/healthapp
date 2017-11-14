@@ -50,7 +50,7 @@ class UsersController < ApplicationController
     
     def index
         if logged_in? && current_user.admin?
-            @users = User.paginate(page: params[:page], per_page: 5)
+            @users = User.paginate(page: params[:page], per_page: 10)
         else
             @users = User.all
         end
